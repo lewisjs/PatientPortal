@@ -1,0 +1,872 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<title>Clinical Questionnaire</title>
+
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+</head>
+
+<body>
+<script type="text/javascript">
+function form_transition(dir, halt) {
+	if('undefined' == typeof(this.state)) {
+	// begins in state 0
+		this.state = 0;
+	}
+
+	$('#divState'+this.state).toggle('slow');	// Hide previous state
+	this.state += dir; 							// update state
+	$('#divState'+this.state).toggle('slow');	// Show current state
+
+	$('#hd2Page').text((this.state + 1) + ' of 8'); // Update page title
+
+	// Correct Buttons
+	if(0 == this.state) { // In initial state
+		$('#btnBack').attr('disabled', 'disabled');
+		$('#btnNext').removeAttr('disabled');
+		$('#btnSubmit').attr('disabled', 'disabled');
+	} else if(halt == this.state) { // In halting state
+		$('#btnBack').removeAttr('disabled');
+		$('#btnNext').attr('disabled', 'disabled');
+		$('#btnSubmit').removeAttr('disabled');
+	} else { // Moving through inner states
+		$('#btnBack').removeAttr('disabled');
+		$('#btnNext').removeAttr('disabled');
+		$('#btnSubmit').attr('disabled', 'disabled');
+	}
+}
+</script>
+<form class="clsContent" style="width:800px; height:36em; margin:auto; 
+	font-family:Arial, Helvetica, sans-serif">
+
+<div id="frmHeader" style="position:relative;height:30px">
+	<input id="btnBack" type="button" value="Back" disabled="disabled"
+		style="position:absolute;top:0;left:0;font-size:120%"
+		onclick="form_transition(-1, 7)" />
+	<input id="btnNext" type="button" value="Next"
+		style="position:absolute;top:0;left:75px;font-size:120%"
+		onclick="form_transition(+1, 7)" />
+	<h2 id="hd2Page" style="position:absolute;width:200px;top:0;right:80px;margin:0;">
+		1 of 8</h2>
+	<input id="btnSubmit" type="submit" value="Submit" disabled="disabled"
+		style="position:absolute;top:0;right:0;font-size:120%" />
+</div>
+
+<div id="divState0" style="display:block">
+<h2> Please choose the ONE best answer for your abilities at this time:</h2>
+<table><tr>
+		<td style="vertical-align:middle">
+			Over the last week you, you were able to do any of the following:
+		</td>
+		<td>Without<br /><span style="font-weight:bolder">ANY</span><br />Difficulty</td>
+		<td>With<br /><span style="font-weight:bolder">SOME</span><br />Difficulty</td>
+		<td>With<br /><span style="font-weight:bolder">MUCH</span><br />Difficulty</td>
+		<td><span style="font-weight:bolder">UNABLE</span><br />To Do</td>
+	</tr><tr>
+		<td>Dress yourself, including tying shoelaces and doing buttons</td>
+		<td><input type="radio" name="DiffLvl1" value="0" id="radDiffLvl10" />
+			<label for="radDiffLvl10">0</label></td>
+		<td><input type="radio" name="DiffLvl1" value="1" id="radDiffLvl11" />
+			<label for="radDiffLvl11">1</label></td>
+		<td><input type="radio" name="DiffLvl1" value="2" id="radDiffLvl12" />
+			<label for="radDiffLvl12">2</label></td>
+		<td><input type="radio" name="DiffLvl1" value="3" id="radDiffLvl13" />
+			<label for="radDiffLvl13">3</label></td>
+	</tr><tr>
+		<td>Get in and out of bed</td>
+		<td><input type="radio" name="DiffLvl2" value="0" id="radDiffLvl20" />
+			<label for="radDiffLvl20">0</label></td>
+		<td><input type="radio" name="DiffLvl2" value="1" id="radDiffLvl21" />
+			<label for="radDiffLvl21">1</label></td>
+		<td><input type="radio" name="DiffLvl2" value="2" id="radDiffLvl22" />
+			<label for="radDiffLvl22">2</label></td>
+		<td><input type="radio" name="DiffLvl2" value="3" id="radDiffLvl23" />
+			<label for="radDiffLvl23">3</label></td>
+	</tr><tr>
+		<td>Lift a full cup or glass to your mouth</td>
+		<td><input type="radio" name="DiffLvl3" value="0" id="radDiffLvl30" />
+			<label for="radDiffLvl30">0</label></td>
+		<td><input type="radio" name="DiffLvl3" value="1" id="radDiffLvl31" />
+			<label for="radDiffLvl31">1</label></td>
+		<td><input type="radio" name="DiffLvl3" value="2" id="radDiffLvl32" />
+			<label for="radDiffLvl32">2</label></td>
+		<td><input type="radio" name="DiffLvl3" value="3" id="radDiffLvl33" />
+			<label for="radDiffLvl33">3</label></td>
+	</tr><tr>
+		<td>Walk outdoors on flat ground</td>
+		<td><input type="radio" name="DiffLvl4" value="0" id="radDiffLvl40" />
+			<label for="radDiffLvl40">0</label></td>
+		<td><input type="radio" name="DiffLvl4" value="1" id="radDiffLvl41" />
+			<label for="radDiffLvl41">1</label></td>
+		<td><input type="radio" name="DiffLvl4" value="2" id="radDiffLvl42" />
+			<label for="radDiffLvl42">2</label></td>
+		<td><input type="radio" name="DiffLvl4" value="3" id="radDiffLvl43" />
+			<label for="radDiffLvl43">3</label></td>
+	</tr><tr>
+		<td>Wash and dry your entire body</td>
+		<td><input type="radio" name="DiffLvl5" value="0" id="radDiffLvl50" />
+			<label for="radDiffLvl50">0</label></td>
+		<td><input type="radio" name="DiffLvl5" value="1" id="radDiffLvl51" />
+			<label for="radDiffLvl51">1</label></td>
+		<td><input type="radio" name="DiffLvl5" value="2" id="radDiffLvl52" />
+			<label for="radDiffLvl52">2</label></td>
+		<td><input type="radio" name="DiffLvl5" value="3" id="radDiffLvl53" />
+			<label for="radDiffLvl53">3</label></td>
+	</tr><tr>
+		<td>Bend down and pick up clothing from the floor</td>
+		<td><input type="radio" name="DiffLvl6" value="0" id="radDiffLvl60" />
+			<label for="radDiffLvl60">0</label></td>
+		<td><input type="radio" name="DiffLvl6" value="1" id="radDiffLvl61" />
+			<label for="radDiffLvl61">1</label></td>
+		<td><input type="radio" name="DiffLvl6" value="2" id="radDiffLvl62" />
+			<label for="radDiffLvl62">2</label></td>
+		<td><input type="radio" name="DiffLvl6" value="3" id="radDiffLvl63" />
+			<label for="radDiffLvl63">3</label></td>
+	</tr><tr>
+		<td>Turn regular faucets on and off</td>
+		<td><input type="radio" name="DiffLvl7" value="0" id="radDiffLvl70" />
+			<label for="radDiffLvl70">0</label></td>
+		<td><input type="radio" name="DiffLvl7" value="1" id="radDiffLvl71" />
+			<label for="radDiffLvl71">1</label></td>
+		<td><input type="radio" name="DiffLvl7" value="2" id="radDiffLvl72" />
+			<label for="radDiffLvl72">2</label></td>
+		<td><input type="radio" name="DiffLvl7" value="3" id="radDiffLvl73" />
+			<label for="radDiffLvl73">3</label></td>
+	</tr><tr>
+		<td>Get in and out of a car, bus, train, or airplane</td>
+		<td><input type="radio" name="DiffLvl8" value="0" id="radDiffLvl80" />
+			<label for="radDiffLvl80">0</label></td>
+		<td><input type="radio" name="DiffLvl8" value="1" id="radDiffLvl81" />
+			<label for="radDiffLvl81">1</label></td>
+		<td><input type="radio" name="DiffLvl8" value="2" id="radDiffLvl82" />
+			<label for="radDiffLvl82">2</label></td>
+		<td><input type="radio" name="DiffLvl8" value="3" id="radDiffLvl83" />
+			<label for="radDiffLvl83">3</label></td>
+	</tr><tr>
+		<td>Walk two miles or three kilometers, if you wish</td>
+		<td><input type="radio" name="DiffLvl9" value="0" id="radDiffLvl90" />
+			<label for="radDiffLvl90">0</label></td>
+		<td><input type="radio" name="DiffLvl9" value="1" id="radDiffLvl91" />
+			<label for="radDiffLvl91">1</label></td>
+		<td><input type="radio" name="DiffLvl9" value="2" id="radDiffLvl92" />
+			<label for="radDiffLvl92">2</label></td>
+		<td><input type="radio" name="DiffLvl9" value="3" id="radDiffLvl93" />
+			<label for="radDiffLvl93">3</label></td>
+	</tr><tr>
+		<td>Participate in recreational activities and sports as you
+			would like, if you wish</td>
+		<td><input type="radio" name="DiffLvl10" value="0" id="radDiffLvl100" />
+			<label for="radDiffLvl100">0</label></td>
+		<td><input type="radio" name="DiffLvl10" value="1" id="radDiffLvl101" />
+			<label for="radDiffLvl101">1</label></td>
+		<td><input type="radio" name="DiffLvl10" value="2" id="radDiffLvl102" />
+			<label for="radDiffLvl102">2</label></td>
+		<td><input type="radio" name="DiffLvl10" value="3" id="radDiffLvl103" />
+			<label for="radDiffLvl103">3</label></td>
+	</tr><tr>
+		<td>Get a good night's sleep</td>
+		<td><input type="radio" name="DiffLvl11" value="0" id="radDiffLvl110" />
+			<label for="radDiffLvl110">0</label></td>
+		<td><input type="radio" name="DiffLvl11" value="1" id="radDiffLvl111" />
+			<label for="radDiffLvl111">1</label></td>
+		<td><input type="radio" name="DiffLvl11" value="2" id="radDiffLvl112" />
+			<label for="radDiffLvl112">2</label></td>
+		<td><input type="radio" name="DiffLvl11" value="3" id="radDiffLvl113" />
+			<label for="radDiffLvl113">3</label></td>
+	</tr><tr>
+		<td>Deal with feelings of anxiety or being nervous</td>
+		<td><input type="radio" name="DiffLvl12" value="0" id="radDiffLvl120" />
+			<label for="radDiffLvl120">0</label></td>
+		<td><input type="radio" name="DiffLvl12" value="1" id="radDiffLvl121" />
+			<label for="radDiffLvl121">1</label></td>
+		<td><input type="radio" name="DiffLvl12" value="2" id="radDiffLvl122" />
+			<label for="radDiffLvl122">2</label></td>
+		<td><input type="radio" name="DiffLvl12" value="3" id="radDiffLvl123" />
+			<label for="radDiffLvl123">3</label></td>
+	</tr><tr>
+		<td>Deal with feelings of depression or feeling blue</td>
+		<td><input type="radio" name="DiffLvl13" value="0" id="radDiffLvl130" />
+			<label for="radDiffLvl130">0</label></td>
+		<td><input type="radio" name="DiffLvl13" value="1" id="radDiffLvl131" />
+			<label for="radDiffLvl131">1</label></td>
+		<td><input type="radio" name="DiffLvl13" value="2" id="radDiffLvl132" />
+			<label for="radDiffLvl132">2</label></td>
+		<td><input type="radio" name="DiffLvl13" value="3" id="radDiffLvl133" />
+			<label for="radDiffLvl133">3</label></td>
+	</tr></table>
+</div>
+
+<div id="divState1" style="display:none">
+	<style>#divState1 td{padding:2px;}</style>
+	<h2>How much pain have you had because of your condition OVER THE PAST WEEK?</h2>
+	<h3 style="text-align:center">Please indicate below how severe your pain has been:</h3>
+	<hr />
+	<div style="position:relative;height:73px">
+		<p style="position:relative;width:40px;padding:0;margin:0">NO PAIN</p>
+		<div style="position:absolute;width:600px;padding:0;margin:0;top:0;left:50px;">
+			<table style="margin:auto"><tr valign="top" style="margin:0;padding:0">
+				<td><input type="radio" name="radPain" id="radPain00" value="0.0" /></td>
+				<td><input type="radio" name="radPain" id="radPain05" value="0.5" /></td>
+				<td><input type="radio" name="radPain" id="radPain10" value="1.0" /></td>
+				<td><input type="radio" name="radPain" id="radPain15" value="1.5" /></td>
+				<td><input type="radio" name="radPain" id="radPain20" value="2.0" /></td>
+				<td><input type="radio" name="radPain" id="radPain25" value="2.5" /></td>
+				<td><input type="radio" name="radPain" id="radPain30" value="3.0" /></td>
+				<td><input type="radio" name="radPain" id="radPain35" value="3.5" /></td>
+				<td><input type="radio" name="radPain" id="radPain40" value="4.0" /></td>
+				<td><input type="radio" name="radPain" id="radPain45" value="4.5" /></td>
+				<td><input type="radio" name="radPain" id="radPain50" value="5.0" /></td>
+				<td><input type="radio" name="radPain" id="radPain55" value="5.5" /></td>
+				<td><input type="radio" name="radPain" id="radPain60" value="6.0" /></td>
+				<td><input type="radio" name="radPain" id="radPain65" value="6.5" /></td>
+				<td><input type="radio" name="radPain" id="radPain70" value="7.0" /></td>
+				<td><input type="radio" name="radPain" id="radPain75" value="7.5" /></td>
+				<td><input type="radio" name="radPain" id="radPain80" value="8.0" /></td>
+				<td><input type="radio" name="radPain" id="radPain85" value="8.5" /></td>
+				<td><input type="radio" name="radPain" id="radPain90" value="9.0" /></td>
+				<td><input type="radio" name="radPain" id="radPain95" value="9.5" /></td>
+				<td><input type="radio" name="radPain" id="radPain100" value="10.0" /></td>
+			</tr><tr valign="top" style="margin-top:0">
+				<td><label for="radPain00">0.0</label></td>
+				<td><label for="radPain05">0.5</label></td>
+				<td><label for="radPain10">1.0</label></td>
+				<td><label for="radPain15">1.5</label></td>
+				<td><label for="radPain20">2.0</label></td>
+				<td><label for="radPain25">2.5</label></td>
+				<td><label for="radPain30">3.0</label></td>
+				<td><label for="radPain35">3.5</label></td>
+				<td><label for="radPain40">4.0</label></td>
+				<td><label for="radPain45">4.5</label></td>
+				<td><label for="radPain50">5.0</label></td>
+				<td><label for="radPain55">5.5</label></td>
+				<td><label for="radPain60">6.0</label></td>
+				<td><label for="radPain65">6.5</label></td>
+				<td><label for="radPain70">7.0</label></td>
+				<td><label for="radPain75">7.5</label></td>
+				<td><label for="radPain80">8.0</label></td>
+				<td><label for="radPain85">8.5</label></td>
+				<td><label for="radPain90">9.0</label></td>
+				<td><label for="radPain95">9.5</label></td>
+				<td><label for="radPain100">10.0</label></td>
+			</tr></table>
+		</div>
+		<p style="position:absolute;width:130px;padding:0;margin:0;top:0;right:0;">
+			PAIN AS BAD AS IT COULD BE</p>
+	</div>
+</div>
+
+
+<div id="divState2" style="display:none">
+<h2>Please indicate in the appropriate place the amount of pain you are having in each of
+the joint areas listed below:</h2>
+<style>
+	#tblState2 input {margin:auto;};
+</style>
+<table id="tblState2"><tr>
+	<td></td><td>None</td><td>Mild</td><td>Moderate</td><td>Severe</td>
+	<td></td><td>None</td><td>Mild</td><td>Moderate</td><td>Severe</td>
+</tr><tr>
+	<td>Left Fingers</td>	
+	<td><input type="radio" name="Joint1" value="0" id="Joint10" />
+		<label for="Joint10">0</label></td>
+	<td><input type="radio" name="Joint1" value="1" id="Joint11" />
+		<label for="Joint11">1</label></td>
+	<td><input type="radio" name="Joint1" value="2" id="Joint12" />
+		<label for="Joint12">2</label></td>
+	<td><input type="radio" name="Joint1" value="3" id="Joint13" />
+		<label for="Joint13">3</label></td>
+	<td>Right Fingers</td>	                                                           
+	<td><input type="radio" name="Joint2" value="0" id="Joint20" />
+		<label for="Joint20">0</label></td>
+	<td><input type="radio" name="Joint2" value="1" id="Joint21" />
+		<label for="Joint21">1</label></td>
+	<td><input type="radio" name="Joint2" value="2" id="Joint22" />
+		<label for="Joint22">2</label></td>
+	<td><input type="radio" name="Joint2" value="3" id="Joint23" />
+		<label for="Joint23">3</label></td>
+</tr><tr>                                                                              
+	<td>Left Wrist</td>		                                                           
+	<td><input type="radio" name="Joint3" value="0" id="Joint30" />
+		<label for="Joint30">0</label></td>
+	<td><input type="radio" name="Joint3" value="1" id="Joint31" />
+		<label for="Joint31">1</label></td>
+	<td><input type="radio" name="Joint3" value="2" id="Joint32" />
+		<label for="Joint32">2</label></td>
+	<td><input type="radio" name="Joint3" value="3" id="Joint33" />
+		<label for="Joint33">3</label></td>
+	<td>Right Wrist</td>	                                                           
+	<td><input type="radio" name="Joint4" value="0" id="Joint40" />
+		<label for="Joint40">0</label></td>
+	<td><input type="radio" name="Joint4" value="1" id="Joint41" />
+		<label for="Joint41">1</label></td>
+	<td><input type="radio" name="Joint4" value="2" id="Joint42" />
+		<label for="Joint42">2</label></td>
+	<td><input type="radio" name="Joint4" value="3" id="Joint43" />
+		<label for="Joint43">3</label></td>
+</tr><tr>                                                                              
+	<td>Left Elbow</td>		                                                           
+	<td><input type="radio" name="Joint5" value="0" id="Joint50" />
+		<label for="Joint50">0</label></td>
+	<td><input type="radio" name="Joint5" value="1" id="Joint51" />
+		<label for="Joint51">1</label></td>
+	<td><input type="radio" name="Joint5" value="2" id="Joint52" />
+		<label for="Joint52">2</label></td>
+	<td><input type="radio" name="Joint5" value="3" id="Joint53" />
+		<label for="Joint53">3</label></td>
+	<td>Right Elbow</td>	                                                           
+	<td><input type="radio" name="Joint6" value="0" id="Joint60" />
+		<label for="Joint60">0</label></td>
+	<td><input type="radio" name="Joint6" value="1" id="Joint61" />
+		<label for="Joint61">1</label></td>
+	<td><input type="radio" name="Joint6" value="2" id="Joint62" />
+		<label for="Joint62">2</label></td>
+	<td><input type="radio" name="Joint6" value="3" id="Joint63" />
+		<label for="Joint63">3</label></td>
+</tr><tr>                                                                              
+	<td>Left Shoulder</td>	                                                           
+	<td><input type="radio" name="Joint7" value="0" id="Joint70" />
+		<label for="Joint70">0</label></td>
+	<td><input type="radio" name="Joint7" value="1" id="Joint71" />
+		<label for="Joint71">1</label></td>
+	<td><input type="radio" name="Joint7" value="2" id="Joint72" />
+		<label for="Joint72">2</label></td>
+	<td><input type="radio" name="Joint7" value="3" id="Joint73" />
+		<label for="Joint73">3</label></td>
+	<td>Right Shoulder</td>	                                                           
+	<td><input type="radio" name="Joint8" value="0" id="Joint80" />
+		<label for="Joint80">0</label></td>
+	<td><input type="radio" name="Joint8" value="1" id="Joint81" />
+		<label for="Joint81">1</label></td>
+	<td><input type="radio" name="Joint8" value="2" id="Joint82" />
+		<label for="Joint82">2</label></td>
+	<td><input type="radio" name="Joint8" value="3" id="Joint83" />
+		<label for="Joint83">3</label></td>
+</tr><tr>                                                                              
+	<td>Left Hip</td>		                                                           
+	<td><input type="radio" name="Joint9" value="0" id="Joint90" />
+		<label for="Joint90">0</label></td>
+	<td><input type="radio" name="Joint9" value="1" id="Joint91" />
+		<label for="Joint91">1</label></td>
+	<td><input type="radio" name="Joint9" value="2" id="Joint92" />
+		<label for="Joint92">2</label></td>
+	<td><input type="radio" name="Joint9" value="3" id="Joint93" />
+		<label for="Joint93">3</label></td>
+	<td>Right Hip</td>		
+	<td><input type="radio" name="Joint10" value="0" id="radJoint100" />
+		<label for="radJoint100">0</label></td>
+	<td><input type="radio" name="Joint10" value="1" id="radJoint101" />
+		<label for="radJoint101">1</label></td>
+	<td><input type="radio" name="Joint10" value="2" id="radJoint102" />
+		<label for="radJoint102">2</label></td>
+	<td><input type="radio" name="Joint10" value="3" id="radJoint103" />
+		<label for="radJoint103">3</label></td>
+</tr><tr>
+	<td>Left Knee</td>
+	<td><input type="radio" name="Joint11" value="0" id="radJoint110" />
+		<label for="radJoint110">0</label></td>
+	<td><input type="radio" name="Joint11" value="1" id="radJoint111" />
+		<label for="radJoint111">1</label></td>
+	<td><input type="radio" name="Joint11" value="2" id="radJoint112" />
+		<label for="radJoint112">2</label></td>
+	<td><input type="radio" name="Joint11" value="3" id="radJoint113" />
+		<label for="radJoint113">3</label></td>
+	<td>Right Knee</td>
+	<td><input type="radio" name="Joint12" value="0" id="radJoint120" />
+		<label for="radJoint120">0</label></td>
+	<td><input type="radio" name="Joint12" value="1" id="radJoint121" />
+		<label for="radJoint121">1</label></td>
+	<td><input type="radio" name="Joint12" value="2" id="radJoint122" />
+		<label for="radJoint122">2</label></td>
+	<td><input type="radio" name="Joint12" value="3" id="radJoint123" />
+		<label for="radJoint123">3</label></td>
+</tr><tr>
+	<td>Left Ankle</td>
+	<td><input type="radio" name="Joint13" value="0" id="radJoint130" />
+		<label for="radJoint130">0</label></td>
+	<td><input type="radio" name="Joint13" value="1" id="radJoint131" />
+		<label for="radJoint131">1</label></td>
+	<td><input type="radio" name="Joint13" value="2" id="radJoint132" />
+		<label for="radJoint132">2</label></td>
+	<td><input type="radio" name="Joint13" value="3" id="radJoint133" />
+		<label for="radJoint133">3</label></td>
+	<td>Right Ankle</td>
+	<td><input type="radio" name="Joint14" value="0" id="radJoint140" />
+		<label for="radJoint140">0</label></td>
+	<td><input type="radio" name="Joint14" value="1" id="radJoint141" />
+		<label for="radJoint141">1</label></td>
+	<td><input type="radio" name="Joint14" value="2" id="radJoint142" />
+		<label for="radJoint142">2</label></td>
+	<td><input type="radio" name="Joint14" value="3" id="radJoint143" />
+		<label for="radJoint143">3</label></td>
+</tr><tr>
+	<td>Left Toes</td>
+	<td><input type="radio" name="Joint15" value="0" id="radJoint150" />
+		<label for="radJoint150">0</label></td>
+	<td><input type="radio" name="Joint15" value="1" id="radJoint151" />
+		<label for="radJoint151">1</label></td>
+	<td><input type="radio" name="Joint15" value="2" id="radJoint152" />
+		<label for="radJoint152">2</label></td>
+	<td><input type="radio" name="Joint15" value="3" id="radJoint153" />
+		<label for="radJoint153">3</label></td>
+	<td>Right Toes</td>
+	<td><input type="radio" name="Joint16" value="0" id="radJoint160" />
+		<label for="radJoint160">0</label></td>
+	<td><input type="radio" name="Joint16" value="1" id="radJoint161" />
+		<label for="radJoint161">1</label></td>
+	<td><input type="radio" name="Joint16" value="2" id="radJoint162" />
+		<label for="radJoint162">2</label></td>
+	<td><input type="radio" name="Joint16" value="3" id="radJoint163" />
+		<label for="radJoint163">3</label></td>
+</tr><tr>
+	<td>Neck</td>
+	<td><input type="radio" name="Joint17" value="0" id="radJoint170" />
+		<label for="radJoint170">0</label></td>
+	<td><input type="radio" name="Joint17" value="1" id="radJoint171" />
+		<label for="radJoint171">1</label></td>
+	<td><input type="radio" name="Joint17" value="2" id="radJoint172" />
+		<label for="radJoint172">2</label></td>
+	<td><input type="radio" name="Joint17" value="3" id="radJoint173" />
+		<label for="radJoint173">3</label></td>
+	<td>Back</td>
+	<td><input type="radio" name="Joint18" value="0" id="radJoint180" />
+		<label for="radJoint180">0</label></td>
+	<td><input type="radio" name="Joint18" value="1" id="radJoint181" />
+		<label for="radJoint181">1</label></td>
+	<td><input type="radio" name="Joint18" value="2" id="radJoint182" />
+		<label for="radJoint182">2</label></td>
+	<td><input type="radio" name="Joint18" value="3" id="radJoint183" />
+		<label for="radJoint183">3</label></td>
+</tr></table>
+</div>
+
+<div id="divState3" style="display:none">
+<style>#divState3 td{padding:2px;}</style>
+<h2>Considering all the way in which illness and health conditions may affect you at this
+time, please indicate below how you are doing:</h2>
+<hr />
+<div style="position:relative;height:73px">
+	<p style="position:relative;width:40px;padding:0;margin:0">VERY WELL</p>
+	<div style="position:absolute;width:600px;padding:0;margin:0;top:0;left:64px;">
+	<table style="margin:auto"><tr valign="top" style="margin:0;padding:0">
+		<td><input type="radio" name="Illness" value="0.0" id="radIllness00" /></td>
+		<td><input type="radio" name="Illness" value="0.5" id="radIllness05" /></td>
+		<td><input type="radio" name="Illness" value="1.0" id="radIllness10" /></td>
+		<td><input type="radio" name="Illness" value="1.5" id="radIllness15" /></td>
+		<td><input type="radio" name="Illness" value="2.0" id="radIllness20" /></td>
+		<td><input type="radio" name="Illness" value="2.5" id="radIllness25" /></td>
+		<td><input type="radio" name="Illness" value="3.0" id="radIllness30" /></td>
+		<td><input type="radio" name="Illness" value="3.5" id="radIllness35" /></td>
+		<td><input type="radio" name="Illness" value="4.0" id="radIllness40" /></td>
+		<td><input type="radio" name="Illness" value="4.5" id="radIllness45" /></td>
+		<td><input type="radio" name="Illness" value="5.0" id="radIllness50" /></td>
+		<td><input type="radio" name="Illness" value="5.5" id="radIllness55" /></td>
+		<td><input type="radio" name="Illness" value="6.0" id="radIllness60" /></td>
+		<td><input type="radio" name="Illness" value="6.5" id="radIllness65" /></td>
+		<td><input type="radio" name="Illness" value="7.0" id="radIllness70" /></td>
+		<td><input type="radio" name="Illness" value="7.5" id="radIllness75" /></td>
+		<td><input type="radio" name="Illness" value="8.0" id="radIllness80" /></td>
+		<td><input type="radio" name="Illness" value="8.5" id="radIllness85" /></td>
+		<td><input type="radio" name="Illness" value="9.0" id="radIllness90" /></td>
+		<td><input type="radio" name="Illness" value="9.5" id="radIllness95" /></td>
+		<td><input type="radio" name="Illness" value="10.0" id="radIllness100" /></td>
+	</tr><tr>
+		<td><label for="radIllness00">0.0</label></td>
+		<td><label for="radIllness05">0.5</label></td>
+		<td><label for="radIllness10">1.0</label></td>
+		<td><label for="radIllness15">1.5</label></td>
+		<td><label for="radIllness20">2.0</label></td>
+		<td><label for="radIllness25">2.5</label></td>
+		<td><label for="radIllness30">3.0</label></td>
+		<td><label for="radIllness35">3.5</label></td>
+		<td><label for="radIllness40">4.0</label></td>
+		<td><label for="radIllness45">4.5</label></td>
+		<td><label for="radIllness50">5.0</label></td>
+		<td><label for="radIllness55">5.5</label></td>
+		<td><label for="radIllness60">6.0</label></td>
+		<td><label for="radIllness65">6.5</label></td>
+		<td><label for="radIllness70">7.0</label></td>
+		<td><label for="radIllness75">7.5</label></td>
+		<td><label for="radIllness80">8.0</label></td>
+		<td><label for="radIllness85">8.5</label></td>
+		<td><label for="radIllness90">9.0</label></td>
+		<td><label for="radIllness95">9.5</label></td>
+		<td><label for="radIllness100">10.0</label></td>
+	</tr></table>
+	</div>
+	<p style="position:absolute;width:110px;padding:0;margin:0;top:0;right:0;">
+		VERY POORLY</p>
+</div>
+</div>
+
+<div id="divState4" style="display:none">
+<h2>Please check if you have experienced any of the following over the last month</h2>
+<table><tr>
+	<td><input type="checkbox" name="Symptom" value="01" id="chbSymptom01" />
+		<label for="chbSymptom01">Fever</label></td>
+	<td><input type="checkbox" name="Symptom" value="02" id="chbSymptom02" />
+		<label for="chbSymptom02">Lump in your throat</label></td>
+	<td><input type="checkbox" name="Symptom" value="03" id="chbSymptom03" />
+		<label for="chbSymptom03">Paralysis of arms or legs</label></td>
+</tr>
+	<td><input type="checkbox" name="Symptom" value="04" id="chbSymptom04" />
+		<label for="chbSymptom04">Weight Gain (&lt;10lbs)</label></td>
+	<td><input type="checkbox" name="Symptom" value="05" id="chbSymptom05" />
+		<label for="chbSymptom05">Cough</label></td>
+	<td><input type="checkbox" name="Symptom" value="06" id="chbSymptom06" />
+		<label for="chbSymptom06">Numbness or tingling of arms or legs</label></td>
+</tr><tr>
+	<td><input type="checkbox" name="Symptom" value="07" id="chbSymptom07" />
+		<label for="chbSymptom07">Weight Loss (&gt;10lbs)</label></td>
+	<td><input type="checkbox" name="Symptom" value="08" id="chbSymptom08" />
+		<label for="chbSymptom08">Shortness of breath</label></td>
+	<td><input type="checkbox" name="Symptom" value="09" id="chbSymptom09" />
+		<label for="chbSymptom09">Fainting Spells</label></td>
+</tr><tr>
+	<td><input type="checkbox" name="Symptom" value="10" id="chbSymptom10" />
+		<label for="chbSymptom10">Feeling sickly</label></td>
+	<td><input type="checkbox" name="Symptom" value="11" id="chbSymptom11" />
+		<label for="chbSymptom11">Wheezing</label></td>
+	<td><input type="checkbox" name="Symptom" value="12" id="chbSymptom12" />
+		<label for="chbSymptom12">Swelling of hands</label></td>
+</tr><tr>
+	<td><input type="checkbox" name="Symptom" value="13" id="chbSymptom13" />
+		<label for="chbSymptom13">Headaches</label></td>
+	<td><input type="checkbox" name="Symptom" value="14" id="chbSymptom14" />
+		<label for="chbSymptom14">Pain in the chest</label></td>
+	<td><input type="checkbox" name="Symptom" value="15" id="chbSymptom15" />
+		<label for="chbSymptom15">Swelling of ankles</label></td>
+</tr><tr>
+	<td><input type="checkbox" name="Symptom" value="16" id="chbSymptom16" />
+		<label for="chbSymptom16">Unusual fatigue</label></td>
+	<td><input type="checkbox" name="Symptom" value="17" id="chbSymptom17" />
+		<label for="chbSymptom17">Heart pounding (palpitations)</label></td>
+	<td><input type="checkbox" name="Symptom" value="18" id="chbSymptom18" />
+		<label for="chbSymptom18">Swelling of other joints</label></td>
+</tr><tr>
+	<td><input type="checkbox" name="Symptom" value="19" id="chbSymptom19" />
+		<label for="chbSymptom19">Swollen glands</label></td>
+	<td><input type="checkbox" name="Symptom" value="20" id="chbSymptom20" />
+		<label for="chbSymptom20">Trouble Swallowing</label></td>
+	<td><input type="checkbox" name="Symptom" value="21" id="chbSymptom21" />
+		<label for="chbSymptom21">Joint Pain</label></td>
+</tr><tr>                                                                                             
+	<td><input type="checkbox" name="Symptom" value="22" id="chbSymptom22" />
+		<label for="chbSymptom22">Loss of appetite</label></td>
+	<td><input type="checkbox" name="Symptom" value="23" id="chbSymptom23" />
+		<label for="chbSymptom23">Heartburn or stomach gas</label></td>
+	<td><input type="checkbox" name="Symptom" value="24" id="chbSymptom24" />
+		<label for="chbSymptom24">Back Pain</label></td>
+</tr><tr>
+	<td><input type="checkbox" name="Symptom" value="25" id="chbSymptom25" />
+		<label for="chbSymptom25">Skin rash or hives</label></td>
+	<td><input type="checkbox" name="Symptom" value="26" id="chbSymptom26" />
+		<label for="chbSymptom26">Stomach pain or cramps</label></td>
+	<td><input type="checkbox" name="Symptom" value="27" id="chbSymptom27" />
+		<label for="chbSymptom27">Neck Pain</label></td>
+</tr><tr>
+	<td><input type="checkbox" name="Symptom" value="28" id="chbSymptom28" />
+		<label for="chbSymptom28">Unusual bruising or bleeding</label></td>
+	<td><input type="checkbox" name="Symptom" value="29" id="chbSymptom29" />
+		<label for="chbSymptom29">Nausea</label></td>
+	<td><input type="checkbox" name="Symptom" value="30" id="chbSymptom30" />
+		<label for="chbSymptom30">Use of drugs not sold instores</label></td>
+</tr><tr>
+	<td><input type="checkbox" name="Symptom" value="31" id="chbSymptom31" />
+		<label for="chbSymptom31">Other skin problems</label></td>
+	<td><input type="checkbox" name="Symptom" value="32" id="chbSymptom32" />
+		<label for="chbSymptom32">Vomiting</label></td>
+	<td><input type="checkbox" name="Symptom" value="33" id="chbSymptom33" />
+		<label for="chbSymptom33">Smoking cigarettes</label></td>
+</tr><tr>                                                                                             
+	<td><input type="checkbox" name="Symptom" value="34" id="chbSymptom34" />
+		<label for="chbSymptom34">Loss of hair</label></td>
+	<td><input type="checkbox" name="Symptom" value="35" id="chbSymptom35" />
+		<label for="chbSymptom35">Constipation</label></td>
+	<td><input type="checkbox" name="Symptom" value="36" id="chbSymptom36" />
+		<label for="chbSymptom36">More than 2 alcoholic drinks per day</label></td>
+</tr><tr>
+	<td><input type="checkbox" name="Symptom" value="37" id="chbSymptom37" />
+		<label for="chbSymptom37">Dry eyes</label></td>
+	<td><input type="checkbox" name="Symptom" value="38" id="chbSymptom38" />
+		<label for="chbSymptom38">Diarrhea</label></td>
+	<td><input type="checkbox" name="Symptom" value="39" id="chbSymptom39" />
+		<label for="chbSymptom39">Depression - feeling blue</label></td>
+</tr><tr>
+	<td><input type="checkbox" name="Symptom" value="40" id="chbSymptom40" />
+		<label for="chbSymptom40">Other eye problems</label></td>
+	<td><input type="checkbox" name="Symptom" value="41" id="chbSymptom41" />
+		<label for="chbSymptom41">Dark or bloody stools</label></td>
+	<td><input type="checkbox" name="Symptom" value="42" id="chbSymptom42" />
+		<label for="chbSymptom42">Anxiety - feeling nervous</label></td>
+</tr><tr>
+	<td><input type="checkbox" name="Symptom" value="43" id="chbSymptom43" />
+		<label for="chbSymptom43">Problems with hearing</label></td>
+	<td><input type="checkbox" name="Symptom" value="44" id="chbSymptom44" />
+		<label for="chbSymptom44">Problems with urination</label></td>
+	<td><input type="checkbox" name="Symptom" value="45" id="chbSymptom45" />
+		<label for="chbSymptom45">Problems with thinking</label></td>
+</tr><tr>
+	<td><input type="checkbox" name="Symptom" value="46" id="chbSymptom46" />
+		<label for="chbSymptom46">Ringing in the ears</label></td>
+	<td><input type="checkbox" name="Symptom" value="47" id="chbSymptom47" />
+		<label for="chbSymptom47">Gynecological (female) issues</label></td>
+	<td><input type="checkbox" name="Symptom" value="48" id="chbSymptom48" />
+		<label for="chbSymptom48">Problems with memory</label></td>
+</tr><tr>
+	<td><input type="checkbox" name="Symptom" value="49" id="chbSymptom49" />
+		<label for="chbSymptom49">Stuffy Nose</label></td>
+	<td><input type="checkbox" name="Symptom" value="50" id="chbSymptom50" />
+		<label for="chbSymptom50">Dizziness</label></td>
+	<td><input type="checkbox" name="Symptom" value="51" id="chbSymptom51" />
+		<label for="chbSymptom51">Problems with sleeping</label></td>
+</tr><tr>
+	<td><input type="checkbox" name="Symptom" value="52" id="chbSymptom52" />
+		<label for="chbSymptom52">Sores in the mouth</label></td>
+	<td><input type="checkbox" name="Symptom" value="53" id="chbSymptom53" />
+		<label for="chbSymptom53">Losing your balance</label></td>
+	<td><input type="checkbox" name="Symptom" value="54" id="chbSymptom54" />
+		<label for="chbSymptom54">Sexual problems</label></td>
+</tr><tr>
+	<td><input type="checkbox" name="Symptom" value="55" id="chbSymptom55" />
+		<label for="chbSymptom55">Dry mouth</label></td>
+	<td><input type="checkbox" name="Symptom" value="56" id="chbSymptom56" />
+		<label for="chbSymptom56">Muscle pain, aches, or cramps</label></td>
+	<td><input type="checkbox" name="Symptom" value="57" id="chbSymptom57" />
+		<label for="chbSymptom57">Burning in sex organs</label></td>
+</tr><tr>
+	<td><input type="checkbox" name="Symptom" value="58" id="chbSymptom58" />
+		<label for="chbSymptom58">Problems with smell or  taste</label></td>
+	<td><input type="checkbox" name="Symptom" value="59" id="chbSymptom59" />
+		<label for="chbSymptom59">Muscle weakness</label></td>
+	<td><input type="checkbox" name="Symptom" value="60" id="chbSymptom60" />
+		<label for="chbSymptom60">Problems with social activities</label></td>
+</tr></table>
+</div>
+
+
+<div id="divState5" style="display:none">
+<h2>When you awakened in the morning OVER THE LAST WEEK, did you feel stiff?</h2>
+<input type="checkbox" name="StiffCheck" value="0" /> No
+<input type="checkbox" name="StiffCheck" value="1" /> Yes
+<p>Please indicate time until you are as limber as you will be for the day:</p>
+Minutes: <input type="text" name="StiffMinutes" /> Seconds: <input type="text"
+name="StiffMinutes" />
+
+<h2>How do you feel TODAY compared to ONE WEEK AGO?</h2>
+<select name="Feel">
+	<option value="1">Much Better</option>
+	<option value="2">Better</option>
+	<option value="3">The Same</option>
+	<option value="4">Worse</option>
+	<option value="5">Much Worse</option>
+</select>
+
+<h2>How often do you exercise aerobically (sweating, increased heart rate, shortness of
+breath) for at least one-half hour (30 minutes)?</h2>
+<select name="Aerobics">
+	<option value="3">3 or more times per week</option>
+	<option value="2">1 - 2 times per week</option>
+	<option value="1">1 - 2 times per month</option>
+	<option value="0">Do not exercise regularly</option>
+	<option value="9">Cannot exercise due to disability/handicap</option>
+</select>
+
+<h2>How much of a problem has UNUSUAL fatigue or tiredness been for you OVER THE PAST
+	WEEK?</h2>
+<div style="position:relative">
+	<p style="position:relative;width:75px">Fatigue is no problem</p>
+	<table>
+	<tr>
+		<td><input type="radio" name="Fatigue" value="0.0" /></td>
+		<td><input type="radio" name="Fatigue" value="0.5" /></td>
+		<td><input type="radio" name="Fatigue" value="1.0" /></td>
+		<td><input type="radio" name="Fatigue" value="1.5" /></td>
+		<td><input type="radio" name="Fatigue" value="2.0" /></td>
+		<td><input type="radio" name="Fatigue" value="2.5" /></td>
+		<td><input type="radio" name="Fatigue" value="3.0" /></td>
+		<td><input type="radio" name="Fatigue" value="3.5" /></td>
+		<td><input type="radio" name="Fatigue" value="4.0" /></td>
+		<td><input type="radio" name="Fatigue" value="4.5" /></td>
+		<td><input type="radio" name="Fatigue" value="5.0" /></td>
+		<td><input type="radio" name="Fatigue" value="5.5" /></td>
+		<td><input type="radio" name="Fatigue" value="6.0" /></td>
+		<td><input type="radio" name="Fatigue" value="6.5" /></td>
+		<td><input type="radio" name="Fatigue" value="7.0" /></td>
+		<td><input type="radio" name="Fatigue" value="7.5" /></td>
+		<td><input type="radio" name="Fatigue" value="8.0" /></td>
+		<td><input type="radio" name="Fatigue" value="8.5" /></td>
+		<td><input type="radio" name="Fatigue" value="9.0" /></td>
+		<td><input type="radio" name="Fatigue" value="9.5" /></td>	
+		<td><input type="radio" name="Fatigue" value="10.0" /></td>
+	</tr>
+	<tr>
+		<td>0.0</td><td>0.5</td><td>1.0</td><td>1.5</td><td>2.0</td><td>2.5</td>
+		<td>3.0</td><td>3.5</td><td>4.0</td><td>4.5</td><td>5.0</td><td>5.5</td>
+		<td>6.0</td><td>6.5</td><td>7.0</td><td>7.5</td><td>8.0</td><td>8.5</td>
+		<td>9.0</td><td>9.5</td><td>10.0</td>
+	</tr>   
+	</table>
+	<p style="width:110px">Fatigue is a major problem</p>
+</div>
+</div>
+
+<div id="divState6" style="display:none">
+<script type="text/javascript">
+function booya() {
+	alert("BOO! YA!!!");
+	}
+</script>
+<h2>Over the last 6 months have you had:</h2>
+<table><tr><td>
+	<input type="radio" name="SixMonth1" value="0" id="radSixMonth10" onselect="booya();"/>
+	<label for="radSixMonth10">No</label>
+	<input type="radio" name="SixMonth1" value="1" id="radSixMonth11" />
+	<label for="radSixMonth11">Yes</label>
+	: An operation
+</td><td>
+	<input type="radio" name="SixMonth7" value="0" id="radSixMonth70" />
+	<label for="radSixMonth70">No</label>
+	<input type="radio" name="SixMonth7" value="1" id="radSixMonth71" />
+	<label for="radSixMonth71">Yes</label>
+	: Change(s) of arthritis drugs or other drugs
+</td></tr>
+<tr><td>
+	<input type="radio" name="SixMonth2" value="0" id="radSixMonth20" />
+	<label for="radSixMonth20">No</label>
+	<input type="radio" name="SixMonth2" value="1" id="radSixMonth21" />
+	<label for="radSixMonth21">Yes</label>
+	: Inpatient hospitalization
+</td><td>
+	<input type="radio" name="SixMonth8" value="0" id="radSixMonth80" />
+	<label for="radSixMonth80">No</label>
+	<input type="radio" name="SixMonth8" value="1" id="radSixMonth81" />
+	<label for="radSixMonth81">Yes</label>
+	: Change(s) of address
+</td></tr>
+<tr><td>
+	<input type="radio" name="SixMonth3" value="0" id="radSixMonth30" />
+	<label for="radSixMonth30">No</label>
+	<input type="radio" name="SixMonth3" value="1" id="radSixMonth31" />
+	<label for="radSixMonth31">Yes</label>
+	: A new illness, accident, or trauma
+</td><td>
+	<input type="radio" name="SixMonth9" value="0" id="radSixMonth90" />
+	<label for="radSixMonth90">No</label>
+	<input type="radio" name="SixMonth9" value="1" id="radSixMonth91" />
+	<label for="radSixMonth91">Yes</label>
+	: Change(s) of marital status
+</td></tr>
+<tr><td>
+	<input type="radio" name="SixMonth4" value="0" id="radSixMonth40" />
+	<label for="radSixMonth40">No</label>
+	<input type="radio" name="SixMonth4" value="1" id="radSixMonth41" />
+	<label for="radSixMonth41">Yes</label>
+	: An important new symptom
+</td><td>
+	<input type="radio" name="SixMonth10" value="0" id="radSixMonth100" />
+	<label for="radSixMonth100">No</label>
+	<input type="radio" name="SixMonth10" value="1" id="radSixMonth101" />
+	<label for="radSixMonth101">Yes</label>
+	: Change job or work duties, quit work, retired
+</td></tr>
+<tr><td>
+	<input type="radio" name="SixMonth5" value="0" id="radSixMonth50" />
+	<label for="radSixMonth50">No</label>
+	<input type="radio" name="SixMonth5" value="1" id="radSixMonth51" />
+	<label for="radSixMonth51">Yes</label>
+	: Side effect(s) of any drug
+</td><td>
+	<input type="radio" name="SixMonth11" value="0" id="radSixMonth110" />
+	<label for="radSixMonth110">No</label>
+	<input type="radio" name="SixMonth11" value="1" id="radSixMonth111" />
+	<label for="radSixMonth111">Yes</label>
+	: Change of medical insurance, Medicare, etc.
+</td></tr>
+<tr><td>
+	<input type="radio" name="SixMonth6" value="0" id="radSixMonth60" />
+	<label for="radSixMonth60">No</label>
+	<input type="radio" name="SixMonth6" value="1" id="radSixMonth61" />
+	<label for="radSixMonth61">Yes</label>
+	: Smoke cigarettes regularly
+</td><td>
+	<input type="radio" name="SixMonth12" value="0" id="radSixMonth120" />
+	<label for="radSixMonth120">No</label>
+	<input type="radio" name="SixMonth12" value="1" id="radSixMonth121" />
+	<label for="radSixMonth121">Yes</label>
+	: Change of primary care or other doctor
+</td></tr></table>
+<h4>Please explain any "Yes" answer below, or indicate any other health matter that
+affects you:</h4>
+<textarea rows="5" cols="60"></textarea>
+</div>
+
+<div id="divState7" style="display:none">
+<span>Sex:</span>
+	<input type="radio" name="Sex" value="f" /> Female
+	<input type="radio" name="Sex" value="m" /> Male
+
+<span>Ethnic Group:</span>
+	<input type="radio" name="EthnicRadio" value="Asian" /> Asian
+	<input type="radio" name="EthnicRadio" value="Black" /> Black
+	<input type="radio" name="EthnicRadio" value="Hispanic" /> Hispanic
+	<input type="radio" name="EthnicRadio" value="White" /> White
+	<input type="radio" name="EthnicRadio" value="0" /> Other: 
+		<input type="text" name="EthnicText" /> <br />
+
+<span>School Years Completed:</span>
+<select name="SchoolYears">
+	<option value="1">1</option>
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	<option value="5">5</option>
+	<option value="6">6</option>
+	<option value="7">7</option>
+	<option value="8">8</option>
+	<option value="9">9</option>
+	<option value="10">10</option>
+	<option value="11">11</option>
+	<option value="12">12</option>
+	<option value="13">13</option>
+	<option value="14">14</option>
+	<option value="15">15</option>
+	<option value="16">16</option>
+	<option value="17">17</option>
+	<option value="18">18</option>
+	<option value="19">19</option>
+	<option value="20">20</option>
+</select>
+
+<span>Your Occupation:</span> <input type="text" name="Occupation" /> <br />
+
+<span>Work Status:</span><br />
+	<input type="radio" name="WorkRadio" value="full-time" /> Full-time,
+	<input type="radio" name="WorkRadio" value="part-time" /> Part-time,
+	<input type="radio" name="WorkRadio" value="disabled" /> Disabled,
+	<input type="radio" name="WorkRadio" value="homemaker" /> Homemaker,
+	<input type="radio" name="WorkRadio" value="self-employed" /> Self-Employed,
+	<input type="radio" name="WorkRadio" value="retired" /> Retired,
+	<input type="radio" name="WorkRadio" value="seeking_work" /> Seeking Work,
+	<input type="radio" name="WorkRadio" value="0" /> or Other: 
+		<input type="text" name="WorkText" /> <br />
+
+<span>Weight:</span> <input type="text" name="Weight" />lbs.
+<span>Height:</span> <input type="text" name="Height" />in.
+
+<br />
+<br />
+
+<span>Your Name</span> <input type="text" name="Name" />
+<span>Date of Birth</span> <input type="text" name="DOB" />
+
+</div>
+
+</form>
+
+</body>
+                                                       
+</html>

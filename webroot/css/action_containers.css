@@ -1,0 +1,35 @@
+@CHARSET "UTF-8";
+
+div.actions {
+	margin-left: auto;
+	margin-right: auto;
+	width:80%;
+	padding:10px 1.5%;
+}
+div.actions h3 {
+	text-align: center;
+	padding-top:0;
+	color:#777;
+}
+
+
+/**  Actions  **/
+.actions ul {
+	margin: 0;
+	padding: 0;
+}
+.actions li {
+	margin:0 0 0.5em 0;
+	list-style-type: none;
+	white-space: nowrap;
+	padding: 0;
+}
+.actions ul li a {
+	font-weight: normal;
+	display: block;
+	clear: both;
+	text-align: center;
+}
+.subactions ul {
+	padding-left: 0.75em;
+}
